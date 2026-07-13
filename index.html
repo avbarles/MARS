@@ -57,6 +57,7 @@
         <div class="section-header">Written Assessment</div>
         <div class="grade-row quiz-row"><span class="grade-label">📝 Quiz 1</span><span class="grade-value" id="valQuiz1">--</span></div>
         <div class="grade-row quiz-row"><span class="grade-label">📝 Quiz 2</span><span class="grade-value" id="valQuiz2">--</span></div>
+        <div class="grade-row quiz-row"><span class="grade-label">📋 Summative 1</span><span class="grade-value" id="valSummative1">--</span></div>
     </div>
 
     <hr class="divider">
@@ -75,7 +76,8 @@
     <h2 class="top5-title">🏆 Top 5: Quiz 2 Scorers</h2>
     <ul class="ranking-list" id="top5ListQuiz"></ul>
 
-    
+    <h2 class="top5-title">🏆 Top 5: Summative 1 Scorers</h2>
+    <ul class="ranking-list" id="top5ListSummative"></ul>
 
     <div class="section-header" style="text-align: center; margin-top: 30px;">🌐 Overall Server Ranking</div>
     <ul class="ranking-list" id="overallRankingList"></ul>
@@ -83,35 +85,46 @@
 
 <script>
     const studentsData = [
-        {'name': 'ANAVA, JOMARI F.', 'disassembling': 93, 'assembling': 95, 'questioning': 83, 'diskpart': 95, 'quiz1': 20, 'quiz2': 5},
-        {'name': 'ARAZA, LENIE M.', 'disassembling': 95, 'assembling': 95, 'questioning': 90, 'diskpart': 95, 'quiz1': 30, 'quiz2': 10},
-        {'name': 'BARICOG, JOHNWEL T.', 'disassembling': 95, 'assembling': 95, 'questioning': 80, 'diskpart': 95, 'quiz1': 21, 'quiz2': 3},
-        {'name': 'BERNALES, FRANZ ALDREX', 'disassembling': 0, 'assembling': 0, 'questioning': 0, 'diskpart': 0, 'quiz1': 0, 'quiz2': 10},
-        {'name': 'BRIONES, KENNETH LAWRENCE N.', 'disassembling': 90, 'assembling': 95, 'questioning': 85, 'diskpart': 95, 'quiz1': 28, 'quiz2': 9},
-        {'name': 'CABAG, SIMONE JOHN PAUL N.', 'disassembling': 94, 'assembling': 85, 'questioning': 80, 'diskpart': 85, 'quiz1': 21, 'quiz2': 8},
-        {'name': 'CADUNGON, KURT M.', 'disassembling': 95, 'assembling': 93, 'questioning': 78, 'diskpart': 91, 'quiz1': 19, 'quiz2': 8},
-        {'name': 'CANTUNGON, LOURENCE N.', 'disassembling': 90, 'assembling': 95, 'questioning': 85, 'diskpart': 92, 'quiz1': 21, 'quiz2': 8},
-        {'name': 'CRUZ, CHRISTIAN JAMES A.', 'disassembling': 95, 'assembling': 93, 'questioning': 95, 'diskpart': 95, 'quiz1': 26, 'quiz2': 7},
-        {'name': 'FELICIANO, MARK NIÑO II P.', 'disassembling': 93, 'assembling': 95, 'questioning': 87, 'diskpart': 95, 'quiz1': 26, 'quiz2': 6},
-        {'name': 'GALIT, KIMWELL B.', 'disassembling': 92, 'assembling': 94, 'questioning': 85, 'diskpart': 94, 'quiz1': 29, 'quiz2': 10},
-        {'name': 'GARCIA, CALEX KYLE O.', 'disassembling': 92, 'assembling': 93, 'questioning': 80, 'diskpart': 92, 'quiz1': 16, 'quiz2': 8},
-        {'name': 'HERMENEGILDO, AITHAN ZOEH P.', 'disassembling': 92, 'assembling': 95, 'questioning': 88, 'diskpart': 95, 'quiz1': 26, 'quiz2': 8},
-        {'name': 'HESPANO, RYAN JAY REPARBOR', 'disassembling': 93, 'assembling': 95, 'questioning': 90, 'diskpart': 95, 'quiz1': 26, 'quiz2': 6},
-        {'name': 'ISIDORO, CHRISTINE N.', 'disassembling': 95, 'assembling': 90, 'questioning': 83, 'diskpart': 95, 'quiz1': 23, 'quiz2': 2},
-        {'name': 'LINAGA, DUXIN M.', 'disassembling': 23, 'assembling': 95, 'questioning': 0, 'diskpart': 95, 'quiz1': 26, 'quiz2': 7},
-        {'name': 'LUCENA, JAMES KEVIN Y.', 'disassembling': 92, 'assembling': 95, 'questioning': 80, 'diskpart': 95, 'quiz1': 23, 'quiz2': 8},
-        {'name': 'MAGLASANG, REMIL JOHN D.', 'disassembling': 92, 'assembling': 93, 'questioning': 85, 'diskpart': 80, 'quiz1': 0, 'quiz2': 7},
-        {'name': 'MALADIA, RALPH L.', 'disassembling': 95, 'assembling': 93, 'questioning': 82, 'diskpart': 93, 'quiz1': 22, 'quiz2': 4},
-        {'name': 'PACIFICO, JOSSA POCAAN', 'disassembling': 92, 'assembling': 93, 'questioning': 87, 'diskpart': 94, 'quiz1': 22, 'quiz2': 4},
-        {'name': 'PARTOSA, ERYL SAMUEL C.', 'disassembling': 95, 'assembling': 95, 'questioning': 93, 'diskpart': 95, 'quiz1': 30, 'quiz2': 10},
-        {'name': 'POSESANO, CALIX DANE O.', 'disassembling': 91, 'assembling': 95, 'questioning': 88, 'diskpart': 95, 'quiz1': 18, 'quiz2': 8},
-        {'name': 'QUIBAL, CLIAN ENZO M.', 'disassembling': 91, 'assembling': 95, 'questioning': 95, 'diskpart': 95, 'quiz1': 30, 'quiz2': 10},
-        {'name': 'RANESES, JESREY BASIUANG', 'disassembling': 92, 'assembling': 95, 'questioning': 93, 'diskpart': 95, 'quiz1': 26, 'quiz2': 9},
-        {'name': 'RIVAS, ANDREW R.', 'disassembling': 91, 'assembling': 95, 'questioning': 85, 'diskpart': 95, 'quiz1': 20, 'quiz2': 4},
-        {'name': 'SANTISAS, NISA B.', 'disassembling': 92, 'assembling': 93, 'questioning': 87, 'diskpart': 93, 'quiz1': 18, 'quiz2': 7},
-        {'name': 'SERRANO, PRINCE CLOWEE ABREU', 'disassembling': 90, 'assembling': 95, 'questioning': 80, 'diskpart': 95, 'quiz1': 23, 'quiz2': 4},
-        {'name': 'TILUD, EJAY N.', 'disassembling': 95, 'assembling': 95, 'questioning': 91, 'diskpart': 0, 'quiz1': 21, 'quiz2': 4},
-        {'name': 'ULTADO, MARKY D.', 'disassembling': 92, 'assembling': 95, 'questioning': 85, 'diskpart': 94, 'quiz1': 23, 'quiz2': 8}
+        {'name': 'ANAVA, JOMARI F.', 'disassembling': 93, 'assembling': 95, 'questioning': 83, 'diskpart': 95, 'quiz1': 20, 'quiz2': 5, 'summative1': 20},
+        {'name': 'ARAZA, LENIE M.', 'disassembling': 95, 'assembling': 95, 'questioning': 90, 'diskpart': 95, 'quiz1': 30, 'quiz2': 10, 'summative1': 28},
+        {'name': 'BARICOG, JOHNWEL T.', 'disassembling': 95, 'assembling': 95, 'questioning': 80, 'diskpart': 95, 'quiz1': 21, 'quiz2': 3, 'summative1': 24},
+        {'name': 'BERNALES, FRANZ ALDREX', 'disassembling': 0, 'assembling': 0, 'questioning': 0, 'diskpart': 0, 'quiz1': 0, 'quiz2': 10, 'summative1': 27},
+        {'name': 'BRIONES, KENNETH LAWRENCE N.', 'disassembling': 90, 'assembling': 95, 'questioning': 85, 'diskpart': 95, 'quiz1': 28, 'quiz2': 9, 'summative1': 27},
+        {'name': 'CABAG, SIMONE JOHN PAUL N.', 'disassembling': 94, 'assembling': 85, 'questioning': 80, 'diskpart': 85, 'quiz1': 21, 'quiz2': 8, 'summative1': 25},
+        {'name': 'CADUNGON, KURT M.', 'disassembling': 95, 'assembling': 93, 'questioning': 78, 'diskpart': 91, 'quiz1': 19, 'quiz2': 8, 'summative1': 22},
+        {'name': 'CANTUNGON, LOURENCE N.', 'disassembling': 90, 'assembling': 95, 'questioning': 85, 'diskpart': 92, 'quiz1': 21, 'quiz2': 8, 'summative1': 23},
+        {'name': 'CRUZ, CHRISTIAN JAMES A.', 'disassembling': 95, 'assembling': 93, 'questioning': 95, 'diskpart': 95, 'quiz1': 26, 'quiz2': 7, 'summative1': 25},
+        {'name': 'FELICIANO, MARK NIÑO II P.', 'disassembling': 93, 'assembling': 95, 'questioning': 87, 'diskpart': 95, 'quiz1': 26, 'quiz2': 6, 'summative1': 28},
+        {'name': 'GALIT, KIMWELL B.', 'disassembling': 92, 'assembling': 94, 'questioning': 85, 'diskpart': 94, 'quiz1': 29, 'quiz2': 10, 'summative1': 19},
+        {'name': 'GARCIA, CALEX KYLE O.', 'disassembling': 92, 'assembling': 93, 'questioning': 80, 'diskpart': 92, 'quiz1': 16, 'quiz2': 8, 'summative1': 27},
+        {'name': 'HERMENEGILDO, AITHAN ZOEH P.', 'disassembling': 92, 'assembling': 95, 'questioning': 88, 'diskpart': 95, 'quiz1': 26, 'quiz2': 8, 'summative1': 26},
+        {'name': 'HESPANO, RYAN JAY REPARBOR', 'disassembling': 93, 'assembling': 95, 'questioning': 90, 'diskpart': 95, 'quiz1': 26, 'quiz2': 6, 'summative1': 25},
+        {'name': 'ISIDORO, CHRISTINE N.', 'disassembling': 95, 'assembling': 90, 'questioning': 83, 'diskpart': 95, 'quiz1': 23, 'quiz2': 2, 'summative1': 24},
+        {'name': 'LINAGA, DUXIN M.', 'disassembling': 23, 'assembling': 95, 'questioning': 0, 'diskpart': 95, 'quiz1': 26, 'quiz2': 7, 'summative1': 0},
+        {'name': 'LUCENA, JAMES KEVIN Y.', 'disassembling': 92, 'assembling': 95, 'questioning': 80, 'diskpart': 95, 'quiz1': 23, 'quiz2': 8, 'summative1': 20},
+        {'name': 'MAGLASANG, REMIL JOHN D.', 'disassembling': 92, 'assembling': 93, 'questioning': 85, 'diskpart': 80, 'quiz1': 0, 'quiz2': 7, 'summative1': 25},
+        {'name': 'MALADIA, RALPH L.', 'disassembling': 95, 'assembling': 93, 'questioning': 82, 'diskpart': 93, 'quiz1': 22, 'quiz2': 4, 'summative1': 23},
+        {'name': 'PACIFICO, JOSSA POCAAN', 'disassembling': 92, 'assembling': 93, 'questioning': 87, 'diskpart': 94, 'quiz1': 22, 'quiz2': 4, 'summative1': 25},
+        {'name': 'PARTOSA, ERYL SAMUEL C.', 'disassembling': 95, 'assembling': 95, 'questioning': 93, 'diskpart': 95, 'quiz1': 30, 'quiz2': 10, 'summative1': 30},
+        {'name': 'POSESANO, CALIX DANE O.', 'disassembling': 91, 'assembling': 95, 'questioning': 88, 'diskpart': 95, 'quiz1': 18, 'quiz2': 8, 'summative1': 23},
+        {'name': 'QUIBAL, CLIAN ENZO M.', 'disassembling': 91, 'assembling': 95, 'questioning': 95, 'diskpart': 95, 'quiz1': 30, 'quiz2': 10, 'summative1': 30},
+        {'name': 'RANESES, JESREY BASIUANG', 'disassembling': 92, 'assembling': 95, 'questioning': 93, 'diskpart': 95, 'quiz1': 26, 'quiz2': 9, 'summative1': 27},
+        {'name': 'RIVAS, ANDREW R.', 'disassembling': 91, 'assembling': 95, 'questioning': 85, 'diskpart': 95, 'quiz1': 20, 'quiz2': 4, 'summative1': 24},
+        {'name': 'SANTISAS, NISA B.', 'disassembling': 92, 'assembling': 93, 'questioning': 87, 'diskpart': 93, 'quiz1': 18, 'quiz2': 7, 'summative1': 25},
+        {'name': 'SERRANO, PRINCE CLOWEE ABREU', 'disassembling': 90, 'assembling': 95, 'questioning': 80, 'diskpart': 95, 'quiz1': 23, 'quiz2': 4, 'summative1': 23},
+        {'name': 'TILUD, EJAY N.', 'disassembling': 95, 'assembling': 95, 'questioning': 91, 'diskpart': 0, 'quiz1': 21, 'quiz2': 4, 'summative1': 18},
+        {'name': 'ULTADO, MARKY D.', 'disassembling': 92, 'assembling': 95, 'questioning': 85, 'diskpart': 94, 'quiz1': 23, 'quiz2': 8, 'summative1': 29},
+	{'name': 'MATA, JANIELLA', 'disassembling': "No Grade", 'assembling': "No Grade", 'questioning': "No Grade", 'diskpart': "No Grade", 'quiz1': "No Grade", 'quiz2': "No Grade", 'summative1': 29}
+
+    ];
+
+    const serversData = [
+        { name: "SERVER 1", disassembling: 92.40, assembling: 94.60, questioning: 89.80, overall: 92.27 },
+        { name: "SERVER 2", disassembling: 94.25, assembling: 94.50, questioning: 87.00, overall: 91.92 },
+        { name: "SERVER 3", disassembling: 92.25, assembling: 90.75, questioning: 86.75, overall: 89.92 },
+        { name: "SERVER 4", disassembling: 91.50, assembling: 92.50, questioning: 83.50, overall: 89.17 },
+        { name: "SERVER 5", disassembling: 92.00, assembling: 94.25, questioning: 87.00, overall: 91.08 },
+        { name: "SERVER 6", disassembling: 94.25, assembling: 94.00, questioning: 86.75, overall: 91.67 }
     ];
 
     window.onload = function() {
@@ -127,15 +140,23 @@
 
         const medals = ['🥇', '🥈', '🥉', '🏅', '🏅'];
         
-        const ptRanking = studentsData
+        // Performance Task Ranking
+        const ptRanking = [...studentsData]
             .map(s => ({ name: s.name, score: ((s.disassembling + s.assembling + s.questioning + s.diskpart)/4).toFixed(2) }))
             .sort((a, b) => b.score - a.score).slice(0, 5);
         document.getElementById('top5List').innerHTML = ptRanking.map((s, i) => `<li class="ranking-item"><span>${medals[i]} ${s.name}</span> <span class="rank-score">${s.score}</span></li>`).join('');
 
-        const quizRanking = studentsData
-            .sort((a, b) => b.quiz1 - a.quiz1).slice(0, 5);
+        // Quiz 2 Ranking
+        const quizRanking = [...studentsData]
+            .sort((a, b) => b.quiz2 - a.quiz2).slice(0, 5);
         document.getElementById('top5ListQuiz').innerHTML = quizRanking.map((s, i) => `<li class="ranking-item"><span>${medals[i]} ${s.name}</span> <span class="rank-score">${s.quiz2}</span></li>`).join('');
 
+        // Summative 1 Ranking
+        const summativeRanking = [...studentsData]
+            .sort((a, b) => b.summative1 - a.summative1).slice(0, 5);
+        document.getElementById('top5ListSummative').innerHTML = summativeRanking.map((s, i) => `<li class="ranking-item"><span>${medals[i]} ${s.name}</span> <span class="rank-score">${s.summative1}</span></li>`).join('');
+
+        // Overall Server Ranking
         const serverScores = [
             { name: 'SERVER 1', score: 91.31 },
             { name: 'SERVER 2', score: 91.63 },
@@ -166,6 +187,7 @@
             document.getElementById('valDiskpart').innerText = s.diskpart;
             document.getElementById('valQuiz1').innerText = s.quiz1;
             document.getElementById('valQuiz2').innerText = s.quiz2;
+            document.getElementById('valSummative1').innerText = s.summative1;
             container.style.display = "block";
         }
     }
